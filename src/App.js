@@ -16,7 +16,31 @@ function App () {
   const [playing, setPlaying] = useState(false)
   const [bpm, setBpm] = useState(120)
 
+  const [, updateState] = useState()
+
   const [currentExercise, setCurrentExercise] = useState(tarantula)
+
+  const [activeBars] = useState(currentExercise.bars.map((bar, index) => index))
+
+  const isActiveBar = (index) => {
+    return activeBars.includes(index)
+  }
+
+  const toggleActiveBar = (index) => {
+    if (isActiveBar(index)) {
+      if (activeBars.length === 1) {
+        return false
+      }
+      activeBars.splice(activeBars.indexOf(index), 1)
+    } else {
+      activeBars.push(index)
+    }
+    setTimeout(() => {
+      updateState({})
+    })
+
+  }
+
   const [currentNote, setCurrentNote] = useState(currentExercise.bars[bar].notes[note])
 
   const romanNumerals = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ', 'Ⅷ', 'Ⅸ', 'Ⅹ', 'Ⅺ', 'Ⅻ']
@@ -29,11 +53,19 @@ function App () {
       let nextBar = bar + 1
       if (!currentExercise.bars[nextBar]) {
         nextBar = 0
-        nextNote = 0
+      }
+      while (!isActiveBar(nextBar)) {
+        nextBar = nextBar + 1
+        if (!currentExercise.bars[nextBar]) {
+          nextBar = 0
+        }
       }
       bar = nextBar
     }
     note = nextNote
+  }
+
+  const getNextBar = () => {
   }
 
   const currentBarContainsDot = (string, fret) => {
@@ -56,6 +88,16 @@ function App () {
     return lowestFret
   }
 
+  const getHighestFretInCurrentBar = () => {
+    let highestFret = 0
+    currentExercise.bars[bar].notes.forEach(note => {
+      if (note.fret > highestFret) {
+        highestFret = note.fret
+      }
+    })
+    return highestFret
+  }
+
   const getAsciiDiagram = () => {
 
     const minFret = getLowestFretInCurrentBar()
@@ -75,7 +117,7 @@ function App () {
       }
       for (let fret = minFret; fret <= maxFret; fret++) {
 
-        const isCurrent = currentNote.string === string && currentNote.fret === fret
+        const isCurrent = playing && currentNote.string === string && currentNote.fret === fret
 
         ascii += '─'
         ascii += currentBarContainsDot(string, fret) ? isCurrent ? '●' : '○' : '─'
@@ -117,9 +159,8 @@ function App () {
     const isPlaying = !playing
     Tone.Transport[isPlaying ? 'start' : 'stop']()
     setPlaying(isPlaying)
+    note = 0
     if (isPlaying) {
-      bar = 0
-      note = 0
       firstNote = true
     }
     showNote()
@@ -192,14 +233,40 @@ function App () {
 
       </div>
 
-      <div className="row mb-5">
+      <div className="row">
         <div className="col">
           <pre style={{ textAlign: 'left', marginLeft: 40 }} className="mb-0">
               {romanNumerals[getLowestFretInCurrentBar() - 1]}
           </pre>
-          <pre style={{ fontSize: '1.7rem', lineHeight: 1.25 }}>
+          <pre style={{ fontSize: '1.7rem', lineHeight: 1.25 }} className="mb-0">
             {getAsciiDiagram()}
           </pre>
+        </div>
+      </div>
+
+      <div className="row ">
+        <div className="col text-center text-muted">
+          {currentExercise.bars.map((dot, index) =>
+            <span className={`d-inline-block me-3 ${bar === index ? 'text-primary' : ''}`} key={index} onClick={() => {
+              if(playing) {
+                return
+              }
+              bar = index
+              note = 0
+              updateState({})
+            }}>
+              ●
+            </span>,
+          )}
+        </div>
+      </div>
+      <div className="row mb-5">
+        <div className="col text-center text-muted">
+          {currentExercise.bars.map((dot, index) =>
+            <span className={`d-inline-block me-3`} key={index}>
+              <input type="checkbox" checked={isActiveBar(index)} onChange={() => {toggleActiveBar(index)}} />
+            </span>,
+          )}
         </div>
       </div>
 
