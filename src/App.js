@@ -232,8 +232,11 @@ function App () {
 
       <div className="row">
         <div className="col">
-          <pre style={{ textAlign: 'center', width: 145 }} className="mb-0">
-            {romanNumerals[getLowestFretInCurrentBar() - 1]}
+          <pre style={{ textAlign: 'center' }} className="mb-0">
+            &nbsp;&nbsp;&nbsp;{romanNumerals[getLowestFretInCurrentBar() - 1]}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </pre>
           <pre style={{ fontSize: '1.4rem', lineHeight: 1.25 }} className="text-center mb-0">
             {getAsciiDiagram()}
