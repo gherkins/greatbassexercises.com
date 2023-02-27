@@ -142,5 +142,40 @@ export default {
         },
       ],
     },
+    {
+      chord: [
+        'G3',
+        'Bb3',
+        'D4',
+        'F4',
+        'Ab4',
+      ],
+      notes: [
+        {
+          string: 2,
+          fret: 10,
+        },
+        {
+          string: 3,
+          fret: 12,
+        },
+        {
+          string: 4,
+          fret: 13,
+        },
+        {
+          string: 4,
+          fret: 10,
+        },
+        {
+          string: 3,
+          fret: 12,
+        },
+        {
+          string: 2,
+          fret: 13,
+        },
+      ],
+    },
   ],
 }
