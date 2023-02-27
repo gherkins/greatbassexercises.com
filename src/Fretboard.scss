@@ -7,6 +7,24 @@ table.fretboard {
         }
     }
 
+    tr:nth-child(4) {
+        td {
+            border-bottom-width: 4px !important;
+        }
+    }
+
+    tr:nth-child(3) {
+        td {
+            border-bottom-width: 3px !important;
+        }
+    }
+
+    tr:nth-child(2) {
+        td {
+            border-bottom-width: 2px !important;
+        }
+    }
+
     td.fret {
         position: relative;
         text-align: center;
