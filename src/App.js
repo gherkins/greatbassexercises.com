@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import * as Tone from 'tone'
 import PianoMp3 from 'tonejs-instrument-piano-mp3'
-import metronomeSound from './metronome.wav'
+import metronomeSound from './audio/metronome.wav'
 import tarantula from './exercise/tarantula'
 import Fretboard from './Fretboard'
 
@@ -125,7 +125,7 @@ function App () {
       <div className="row mb-4">
         <div className="col">
           <h1>
-            Great<br/>
+            Great<br />
             Bass<br />
             Exercises.com
           </h1>
@@ -174,7 +174,7 @@ function App () {
       </div>
 
       <div className="row mb-5">
-        <div className="col text-center text-muted pre">
+        <div className="col text-center">
           {currentExercise.bars.map((dot, index) =>
             <div className="indicator-container">
               <span className={`indicator ${bar === index ? 'active' : ''}`}
