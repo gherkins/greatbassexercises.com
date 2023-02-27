@@ -1,0 +1,28 @@
+.container {
+    max-width: 440px !important;
+}
+
+.indicator-container {
+    display: inline-block;
+    padding: 0 5px;
+
+    input {
+        cursor: pointer;
+    }
+
+    .indicator {
+        cursor: pointer;
+        display: inline-block;
+        padding: 0;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 1px solid #000;
+        background-color: #fff;
+
+        &.active {
+            border-color: #0b5ed7;
+            background-color: #0b5ed7;
+        }
+    }
+}

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import './App.css'
 import * as Tone from 'tone'
 import PianoMp3 from 'tonejs-instrument-piano-mp3'
 import metronomeSound from './metronome.wav'
-
 import tarantula from './exercise/tarantula'
+import Fretboard from './Fretboard'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.scss'
 
 let initialized = false
 let bar = 0
@@ -44,8 +46,6 @@ function App () {
 
   const [currentNote, setCurrentNote] = useState(currentExercise.bars[bar].notes[note])
 
-  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII']
-
   const advance = () => {
     const currentBar = currentExercise.bars[bar]
     let nextNote = note + 1
@@ -64,79 +64,6 @@ function App () {
       bar = nextBar
     }
     note = nextNote
-  }
-
-  const currentBarContainsDot = (string, fret) => {
-    let contains = false
-    currentExercise.bars[bar].notes.forEach(note => {
-      if (note.fret === fret && note.string === string) {
-        contains = true
-      }
-    })
-    return contains
-  }
-
-  const getLowestFretInCurrentBar = () => {
-    let lowestFret = 100
-    currentExercise.bars[bar].notes.forEach(note => {
-      if (note.fret < lowestFret) {
-        lowestFret = note.fret
-      }
-    })
-    return lowestFret
-  }
-
-  const getAsciiDiagram = () => {
-
-    const minFret = getLowestFretInCurrentBar()
-    const maxFret = minFret + 5
-
-    let ascii = ''
-    for (let string = 4; string >= 1; string--) {
-      switch (string) {
-        case 4:
-          ascii += '┌'
-          break
-        case 1:
-          ascii += '└'
-          break
-        default:
-          ascii += '├'
-      }
-      for (let fret = minFret; fret <= maxFret; fret++) {
-
-        const isCurrent = playing && currentNote.string === string && currentNote.fret === fret
-
-        ascii += '─'
-        ascii += currentBarContainsDot(string, fret) ? isCurrent ? '●' : '○' : '─'
-        ascii += '─'
-        if (fret === maxFret) {
-          switch (string) {
-            case 4:
-              ascii += '┐\n'
-              break
-            case 1:
-              ascii += '┘'
-              break
-            default:
-              ascii += '┤\n'
-          }
-        } else {
-          switch (string) {
-            case 4:
-              ascii += '┬'
-              break
-            case 1:
-              ascii += '┴'
-              break
-            default:
-              ascii += '┼'
-          }
-        }
-
-      }
-    }
-    return ascii
   }
 
   const showNote = () => {
@@ -194,7 +121,7 @@ function App () {
   }, [])
 
   return (
-    <div className="container mt-3" style={{ maxWidth: 440 }}>
+    <div className="container mt-3">
       <div className="row mb-4">
         <div className="col">
           <h1>GreatBass<br />Exercises.com</h1>
@@ -230,48 +157,39 @@ function App () {
 
       </div>
 
-      <div className="row">
+      <div className="row mb-3">
         <div className="col">
-          <div style={{ textAlign: 'center', fontSize: 10 }} className="pre mb-0">
-            &nbsp;&nbsp;&nbsp;{romanNumerals[getLowestFretInCurrentBar() - 1]}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;
-          </div>
-          <div className="pre text-center mb-3">
-            {getAsciiDiagram()}
-          </div>
+          <Fretboard
+            currentExercise={currentExercise}
+            currentNote={currentNote}
+            playing={playing}
+            bar={bar}
+            note={note}
+          />
         </div>
       </div>
 
-      <div className="row ">
+      <div className="row mb-5">
         <div className="col text-center text-muted pre">
           {currentExercise.bars.map((dot, index) =>
-            <span className={`d-inline-block ms-2 me-2`}
-                  style={{ width: 15 }}
-                  key={index}
-                  onClick={() => {
-                    if (playing) {
-                      return
-                    }
-                    bar = index
-                    note = 0
-                    updateState({})
-                  }}
-            >
-              {bar === index ? '●' : '○'}
-            </span>,
-          )}
-        </div>
-      </div>
-      <div className="row mb-5">
-        <div className="col text-center text-muted">
-          {currentExercise.bars.map((dot, index) =>
-            <span className={`d-inline-block ms-2 me-2`} key={index} style={{ width: 15 }}>
+            <div className="indicator-container">
+              <span className={`indicator ${bar === index ? 'active' : ''}`}
+                    key={index}
+                    onClick={() => {
+                      if (playing) {
+                        return
+                      }
+                      bar = index
+                      note = 0
+                      updateState({})
+                    }}
+              >
+              </span>
+              <br/>
+              <span className={`d-inline-block ms-2 me-2`} key={index} style={{ width: 15 }}>
               <input type="checkbox" checked={isActiveBar(index)} onChange={() => {toggleActiveBar(index)}} />
-            </span>,
+            </span>
+            </div>,
           )}
         </div>
       </div>
