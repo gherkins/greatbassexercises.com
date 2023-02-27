@@ -232,15 +232,17 @@ function App () {
 
       <div className="row">
         <div className="col">
-          <pre style={{ textAlign: 'center' }} className="mb-0">
+          <div style={{ textAlign: 'center', fontSize: 10 }} className="pre mb-0">
             &nbsp;&nbsp;&nbsp;{romanNumerals[getLowestFretInCurrentBar() - 1]}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </pre>
-          <pre style={{ fontSize: '1.4rem', lineHeight: 1.25 }} className="text-center mb-0">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;
+          </div>
+          <div className="pre text-center mb-0">
             {getAsciiDiagram()}
-          </pre>
+          </div>
         </div>
       </div>
 
@@ -248,7 +250,7 @@ function App () {
         <div className="col text-center text-muted pre">
           {currentExercise.bars.map((dot, index) =>
             <span className={`d-inline-block ms-2 me-2`}
-                  style={{ fontSize: '1.4rem', width: 15 }}
+                  style={{ width: 15 }}
                   key={index}
                   onClick={() => {
                     if (playing) {
