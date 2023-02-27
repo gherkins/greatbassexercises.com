@@ -43,7 +43,7 @@ function App () {
 
   const [currentNote, setCurrentNote] = useState(currentExercise.bars[bar].notes[note])
 
-  const romanNumerals = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ', 'Ⅷ', 'Ⅸ', 'Ⅹ', 'Ⅺ', 'Ⅻ']
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
 
   const advance = () => {
     const currentBar = currentExercise.bars[bar]
@@ -235,8 +235,8 @@ function App () {
 
       <div className="row">
         <div className="col">
-          <pre style={{ textAlign: 'left', marginLeft: 40 }} className="mb-0">
-              {romanNumerals[getLowestFretInCurrentBar() - 1]}
+          <pre style={{ textAlign: 'center', width: 85 }} className="mb-0">
+            {romanNumerals[getLowestFretInCurrentBar() - 1]}
           </pre>
           <pre style={{ fontSize: '1.7rem', lineHeight: 1.25 }} className="mb-0">
             {getAsciiDiagram()}
