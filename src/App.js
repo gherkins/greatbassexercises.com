@@ -240,7 +240,7 @@ function App () {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;
           </div>
-          <div className="pre text-center mb-0">
+          <div className="pre text-center mb-3">
             {getAsciiDiagram()}
           </div>
         </div>
