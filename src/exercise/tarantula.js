@@ -1,4 +1,4 @@
-export default {
+const tarantula = {
   title: 'Dan Lopatka’s Tarantula Exercise in C-minor',
   description: 'Super useful and fun way to practice 9th arpeggios over the C-minor scale.',
   bars: [
@@ -249,3 +249,5 @@ export default {
     },
   ],
 }
+
+export default tarantula
