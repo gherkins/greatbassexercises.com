@@ -122,9 +122,9 @@ function App () {
 
   return (
     <div className="container mt-3">
-      <div className="row mb-4">
+      <div className="row mb-5">
         <div className="col">
-          <h1>GreatBass<br />Exercises.com</h1>
+          <h1>Great<br/>Bass<br />Exercises<br/>.com</h1>
         </div>
       </div>
       <div className="row mb-3">
