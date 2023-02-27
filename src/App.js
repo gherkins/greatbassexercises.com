@@ -43,7 +43,7 @@ function App () {
 
   const [currentNote, setCurrentNote] = useState(currentExercise.bars[bar].notes[note])
 
-  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII']
 
   const advance = () => {
     const currentBar = currentExercise.bars[bar]
@@ -235,10 +235,10 @@ function App () {
 
       <div className="row">
         <div className="col">
-          <pre style={{ textAlign: 'center', width: 85 }} className="mb-0">
+          <pre style={{ textAlign: 'center', width: 145 }} className="mb-0">
             {romanNumerals[getLowestFretInCurrentBar() - 1]}
           </pre>
-          <pre style={{ fontSize: '1.7rem', lineHeight: 1.25 }} className="mb-0">
+          <pre style={{ fontSize: '1.4rem', lineHeight: 1.25 }} className="text-center mb-0">
             {getAsciiDiagram()}
           </pre>
         </div>
@@ -247,7 +247,7 @@ function App () {
       <div className="row ">
         <div className="col text-center text-muted">
           {currentExercise.bars.map((dot, index) =>
-            <span className={`d-inline-block me-3 ${bar === index ? 'text-primary' : ''}`}
+            <span className={`d-inline-block ms-2 me-2 ${bar === index ? 'text-primary' : ''}`}
                   style={{width: 15}}
                   key={index}
                   onClick={() => {
@@ -267,7 +267,7 @@ function App () {
       <div className="row mb-5">
         <div className="col text-center text-muted">
           {currentExercise.bars.map((dot, index) =>
-            <span className={`d-inline-block me-3`} key={index} style={{width: 15}}>
+            <span className={`d-inline-block ms-2 me-2`} key={index} style={{width: 15}}>
               <input type="checkbox" checked={isActiveBar(index)} onChange={() => {toggleActiveBar(index)}} />
             </span>,
           )}
