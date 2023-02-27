@@ -6,10 +6,11 @@ import metronomeSound from './metronome.wav'
 
 import tarantula from './exercise/tarantula'
 
+let initialized = false
 let bar = 0
 let note = 0
 let firstNote = true
-let piano
+let piano, metro
 
 function App () {
 
@@ -156,6 +157,7 @@ function App () {
   }
 
   const startStop = () => {
+    init()
     const isPlaying = !playing
     Tone.Transport[isPlaying ? 'start' : 'stop']()
     setPlaying(isPlaying)
@@ -179,9 +181,11 @@ function App () {
     })
   }
 
-  useEffect(() => {
-    piano = new PianoMp3().toDestination()
-    const metro = new Tone.Player(metronomeSound).toDestination()
+  const init = () => {
+    if (initialized) {
+      return false
+    }
+    Tone.start()
 
     Tone.Transport.scheduleRepeat((time) => {
       if (!firstNote) {
@@ -194,6 +198,12 @@ function App () {
       }
       metro.start(time)
     }, '4n')
+    initialized = true
+  }
+
+  useEffect(() => {
+    piano = new PianoMp3().toDestination()
+    metro = new Tone.Player(metronomeSound).toDestination()
   }, [])
 
   return (
@@ -248,7 +258,7 @@ function App () {
         <div className="col text-center text-muted">
           {currentExercise.bars.map((dot, index) =>
             <span className={`d-inline-block ms-2 me-2 ${bar === index ? 'text-primary' : ''}`}
-                  style={{width: 15}}
+                  style={{ width: 15 }}
                   key={index}
                   onClick={() => {
                     if (playing) {
@@ -267,7 +277,7 @@ function App () {
       <div className="row mb-5">
         <div className="col text-center text-muted">
           {currentExercise.bars.map((dot, index) =>
-            <span className={`d-inline-block ms-2 me-2`} key={index} style={{width: 15}}>
+            <span className={`d-inline-block ms-2 me-2`} key={index} style={{ width: 15 }}>
               <input type="checkbox" checked={isActiveBar(index)} onChange={() => {toggleActiveBar(index)}} />
             </span>,
           )}
