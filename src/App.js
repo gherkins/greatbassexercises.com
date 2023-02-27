@@ -242,10 +242,10 @@ function App () {
       </div>
 
       <div className="row ">
-        <div className="col text-center text-muted">
+        <div className="col text-center text-muted pre">
           {currentExercise.bars.map((dot, index) =>
             <span className={`d-inline-block ms-2 me-2`}
-                  style={{ width: 15 }}
+                  style={{ fontSize: '1.4rem', width: 15 }}
                   key={index}
                   onClick={() => {
                     if (playing) {
@@ -257,7 +257,6 @@ function App () {
                   }}
             >
               {bar === index ? '●' : '○'}
-
             </span>,
           )}
         </div>
