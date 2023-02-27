@@ -247,14 +247,18 @@ function App () {
       <div className="row ">
         <div className="col text-center text-muted">
           {currentExercise.bars.map((dot, index) =>
-            <span className={`d-inline-block me-3 ${bar === index ? 'text-primary' : ''}`} key={index} onClick={() => {
-              if(playing) {
-                return
-              }
-              bar = index
-              note = 0
-              updateState({})
-            }}>
+            <span className={`d-inline-block me-3 ${bar === index ? 'text-primary' : ''}`}
+                  style={{width: 15}}
+                  key={index}
+                  onClick={() => {
+                    if (playing) {
+                      return
+                    }
+                    bar = index
+                    note = 0
+                    updateState({})
+                  }}
+            >
               ●
             </span>,
           )}
@@ -263,7 +267,7 @@ function App () {
       <div className="row mb-5">
         <div className="col text-center text-muted">
           {currentExercise.bars.map((dot, index) =>
-            <span className={`d-inline-block me-3`} key={index}>
+            <span className={`d-inline-block me-3`} key={index} style={{width: 15}}>
               <input type="checkbox" checked={isActiveBar(index)} onChange={() => {toggleActiveBar(index)}} />
             </span>,
           )}
