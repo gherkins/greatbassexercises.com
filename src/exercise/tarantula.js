@@ -5,21 +5,35 @@ export default {
     {
       chord: [
         'C3',
-        'E3',
-        'C4',
+        'D#3',
+        'G3',
+        'A#3',
+        'D4',
       ],
       notes: [
         {
-          string: 1,
-          fret: 1,
-        },
-        {
-          string: 1,
-          fret: 2,
-        },
-        {
-          string: 1,
+          string: 2,
           fret: 3,
+        },
+        {
+          string: 3,
+          fret: 5,
+        },
+        {
+          string: 4,
+          fret: 7,
+        },
+        {
+          string: 4,
+          fret: 3,
+        },
+        {
+          string: 3,
+          fret: 5,
+        },
+        {
+          string: 2,
+          fret: 6,
         },
       ],
     },
