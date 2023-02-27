@@ -1,48 +1,27 @@
-export default [
-  {
-    chord: [
-      'C3',
-      'E3',
-      'C4',
-    ],
-    ticks: [
-      {
-        'fret': 1,
-        'string': 1,
-      },
-      {
-        'fret': 2,
-        'string': 1,
-      },
-      {
-        'fret': 3,
-        'string': 1,
-      },
-    ],
-  },
-  {
-    chord: [
-      'D3',
-      'F3',
-      'D4',
-    ],
-    ticks: [
-      {
-        'fret': 1,
-        'string': 2,
-      },
-      {
-        'fret': 2,
-        'string': 2,
-      },
-      {
-        'fret': 3,
-        'string': 2,
-      },
-      {
-        'fret': 4,
-        'string': 2,
-      },
-    ],
-  },
-]
+export default {
+  title: 'Dan Lopatka’s Tarantula Exercise in C-minor',
+  description: 'Super useful and fun way to practice 9th arpeggios over the C-minor scale.',
+  bars: [
+    {
+      chord: [
+        'C3',
+        'E3',
+        'C4',
+      ],
+      notes: [
+        {
+          string: 1,
+          fret: 1,
+        },
+        {
+          string: 1,
+          fret: 2,
+        },
+        {
+          string: 1,
+          fret: 3,
+        },
+      ],
+    },
+  ],
+}
