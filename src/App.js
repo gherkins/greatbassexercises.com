@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import * as Tone from 'tone'
-
-import { Piano } from "@tonejs/piano";
+import PianoMp3 from 'tonejs-instrument-piano-mp3'
+import metronomeSound from './metronome.wav'
 
 import tarantula from './exercise/tarantula'
 
 let slice = 0
 let tick = 0
 let firstTick = true
-const synth = new Tone.PolySynth(Tone.FMSynth).toDestination()
-const piano = new Piano({velocities: 5}).toDestination()
-piano.load().then(() => {
-  console.log('piano loaded')
-})
-
+let piano
 
 function App () {
 
@@ -64,7 +59,7 @@ function App () {
         const isCurrent = currentTick.string === string && currentTick.fret === fret
 
         ascii += '─'
-        ascii += res.includes(`${string}-${fret}`) ? isCurrent ? '●' : '○' : '─';
+        ascii += res.includes(`${string}-${fret}`) ? isCurrent ? '●' : '○' : '─'
         ascii += '─'
         if (fret === 6) {
           switch (string) {
@@ -107,9 +102,6 @@ function App () {
     tick = 0
     firstTick = true
     showTick()
-    if (!isPlaying) {
-      synth.releaseAll()
-    }
   }
 
   const setTempo = bpm => {
@@ -119,17 +111,18 @@ function App () {
   }
 
   const playChord = time => {
-    synth.releaseAll()
+    piano.releaseAll()
     currentExercise[slice].chord.forEach((note, index) => {
-      // synth.triggerAttack(note, time)
-      piano.keyDown(note, time)
+      piano.triggerAttack(note, time)
     })
   }
 
   useEffect(() => {
-    const plucky = new Tone.PluckSynth().toDestination()
+    piano = new PianoMp3().toDestination()
+    const metro = new Tone.Player(metronomeSound).toDestination()
+
     Tone.Transport.scheduleRepeat((time) => {
-      if( !firstTick ){
+      if (!firstTick) {
         progress()
       }
       firstTick = false
@@ -137,25 +130,41 @@ function App () {
       if (tick === 0) {
         playChord(time)
       }
-      plucky.triggerAttack('C4', time)
+      metro.start(time)
     }, '4n')
   }, [])
 
   return (
-    <div className="App">
-      <span>{bpm} BPM</span>
-      <input type="range" min={40} max={200} value={bpm} onChange={e => {setTempo(e.target.value)}} />
-
-      <button onClick={startStop}>
-        {playing ? 'stop' : 'start'}
-      </button>
-
-      <div>
-        <pre>
-          {getAsciiDiagram()}
-        </pre>
+    <div className="container" style={{ maxWidth: 440 }}>
+      <div className="row">
+        <div className="col">
+          <h1>great bass exercises</h1>
+        </div>
       </div>
+      <div className="row">
+        <div className="col">
+          <div className="App">
+            <label className="form-label">{bpm} BPM</label>
+            <input className="form-range"
+                   type="range"
+                   min={40}
+                   max={200}
+                   value={bpm}
+                   onChange={e => {setTempo(e.target.value)}}
+            />
 
+            <button onClick={startStop} className="btn btn-success">
+              {playing ? 'stop' : 'start'}
+            </button>
+
+            <div>
+              <pre style={{ fontSize: '1.7rem', lineHeight: 1.25 }}>
+                {getAsciiDiagram()}
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
