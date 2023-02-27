@@ -19,7 +19,7 @@ function App () {
 
   const [, updateState] = useState()
 
-  const [currentExercise, setCurrentExercise] = useState(tarantula)
+  const [currentExercise] = useState(tarantula)
 
   const [activeBars] = useState(currentExercise.bars.map((bar, index) => index))
 
@@ -66,9 +66,6 @@ function App () {
     note = nextNote
   }
 
-  const getNextBar = () => {
-  }
-
   const currentBarContainsDot = (string, fret) => {
     let contains = false
     currentExercise.bars[bar].notes.forEach(note => {
@@ -87,16 +84,6 @@ function App () {
       }
     })
     return lowestFret
-  }
-
-  const getHighestFretInCurrentBar = () => {
-    let highestFret = 0
-    currentExercise.bars[bar].notes.forEach(note => {
-      if (note.fret > highestFret) {
-        highestFret = note.fret
-      }
-    })
-    return highestFret
   }
 
   const getAsciiDiagram = () => {
