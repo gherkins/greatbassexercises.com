@@ -177,7 +177,7 @@ function App () {
           </button>
 
         </div>
-        <div className="col col-md-7">
+        <div className="col col-md-7 pt-2">
           <input className="form-range"
                  type="range"
                  min={40}
@@ -186,7 +186,7 @@ function App () {
                  onChange={e => {setTempo(e.target.value)}}
           />
         </div>
-        <div className="col col-md-3">
+        <div className="col col-md-3 pt-2">
           <label className="form-label">{bpm} BPM</label>
         </div>
 
