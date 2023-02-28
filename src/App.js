@@ -167,8 +167,10 @@ function App () {
       <div className="row mb-4">
         <div className="col col-md-2">
 
-          <button onClick={startStop} className={`btn btn-primary`} disabled={!instrumentsLoaded}>
-            {playing ? 'STOP' : 'PLAY'}
+          <button onClick={startStop}
+                  className={`btn btn-${!instrumentsLoaded ? 'btn-outline-primary' : 'primary'}`}
+                  disabled={!instrumentsLoaded}>
+            {!instrumentsLoaded ? 'BUSY' : playing ? 'STOP' : 'PLAY'}
           </button>
 
         </div>
