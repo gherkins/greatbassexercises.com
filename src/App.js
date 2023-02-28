@@ -176,7 +176,7 @@ function App () {
           <input className="form-range"
                  type="range"
                  min={40}
-                 max={200}
+                 max={280}
                  value={bpm}
                  onChange={e => {setTempo(e.target.value)}}
           />
