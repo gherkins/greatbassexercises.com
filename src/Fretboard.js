@@ -44,16 +44,17 @@ function Fretboard (props) {
   }
 
   return <table className="table fretboard">
-    {strings.map(string => <tr className="string" key={string}>
-      {frets.map(fret => <td className="fret" key={fret}>
-        {string === 4 && fret === minFret && <span className="fretnumber">
+    <tbody>
+      {strings.map(string => <tr className="string" key={`s-${string}`}>
+        {frets.map(fret => <td className="fret" key={`s-${string}-f-${fret}`}>
+          {string === 4 && fret === minFret && <span className="fretnumber">
           {romanNumerals[minFret - 1]}
         </span>}
-        {isDottedFret(string, fret) && <span className="dot"></span>}
-        {isActiveFret(string, fret) && <span className="dot active"></span>}
-      </td>)}
-    </tr>)}
-
+          {isDottedFret(string, fret) && <span className="dot"></span>}
+          {isActiveFret(string, fret) && <span className="dot active"></span>}
+        </td>)}
+      </tr>)}
+    </tbody>
   </table>
 }
 

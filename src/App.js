@@ -16,6 +16,8 @@ let piano, metro
 
 function App () {
 
+  const [instrumentsLoaded, setInstrumentsLoaded] = useState(false)
+
   const [playing, setPlaying] = useState(false)
   const [bpm, setBpm] = useState(120)
 
@@ -115,9 +117,33 @@ function App () {
     initialized = true
   }
 
+  const initInstruments = () => {
+
+    const initPiano = new Promise((resolve) => {
+      piano = new PianoMp3({
+        onload: () => {
+          resolve()
+        },
+      }).toDestination()
+    })
+
+    const initMetro = new Promise((resolve) => {
+      metro = new Tone.Player(metronomeSound, () => {
+        resolve()
+      }).toDestination()
+    })
+
+    return new Promise((resolveMain) => {
+      Promise.all([initPiano, initMetro]).then(() => {
+        resolveMain()
+      })
+    })
+  }
+
   useEffect(() => {
-    piano = new PianoMp3().toDestination()
-    metro = new Tone.Player(metronomeSound).toDestination()
+    initInstruments().then(() => {
+      setInstrumentsLoaded(true)
+    })
   }, [])
 
   return (
@@ -141,7 +167,7 @@ function App () {
       <div className="row mb-4">
         <div className="col col-md-2">
 
-          <button onClick={startStop} className={`btn btn-primary`}>
+          <button onClick={startStop} className={`btn btn-primary`} disabled={!instrumentsLoaded}>
             {playing ? 'STOP' : 'PLAY'}
           </button>
 
@@ -176,7 +202,7 @@ function App () {
       <div className="row mb-5">
         <div className="col text-center">
           {currentExercise.bars.map((dot, index) =>
-            <div className="indicator-container">
+            <div className="indicator-container" key={`indicator-${index}`}>
               <span className={`indicator ${bar === index ? 'active' : ''}`}
                     key={index}
                     onClick={() => {
@@ -190,7 +216,7 @@ function App () {
               >
               </span>
               <br />
-              <span className={`d-inline-block ms-2 me-2`} key={index} style={{ width: 15 }}>
+              <span className={`d-inline-block ms-2 me-2`} style={{ width: 15 }}>
               <input type="checkbox" checked={isActiveBar(index)} onChange={() => {toggleActiveBar(index)}} />
             </span>
             </div>,
