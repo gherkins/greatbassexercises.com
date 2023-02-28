@@ -211,27 +211,6 @@ function App () {
         </div>
       </div>
 
-      <div className="row mb-5">
-        <div className="col">
-          <h6>
-            <strong>
-              How to use this app
-            </strong>
-          </h6>
-          <p>
-            <ul className="list-unstyled">
-              <li>Choose an exercise from the dropdown.</li>
-              <li>Turn on Audio(!).</li>
-              <li>Hit the play/stop button to toggle playback.</li>
-              <li>Use the slider to change the tempo.</li>
-              <li>Play along and enjoy.</li>
-            </ul>
-            The lowest fretnumber is shown in the top left corner of the fretboard.<br />
-            Below the fretboard you can check/uncheck the bars you want to play. You can also click/tap on the bar
-            indicator above the checkbox to jump to that bar.
-          </p>
-        </div>
-      </div>
     </div>
   )
 }
