@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import * as Tone from 'tone'
 import PianoMp3 from 'tonejs-instrument-piano-mp3'
 import metronomeSound from './audio/metronome.wav'
-import tarantula from './exercise/tarantula'
+
+import exercises from './Exercises'
 import Fretboard from './Fretboard'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -23,7 +24,16 @@ function App () {
 
   const [, updateState] = useState()
 
-  const [currentExercise] = useState(tarantula)
+  const [currentExercise, setCurrentExercise] = useState(Object.values(exercises)[0])
+  const updateExercise = key => {
+    setCurrentExercise(exercises[key])
+    if (playing) {
+      startStop()
+    }
+    bar = 0
+    note = 0
+    updateState({})
+  }
 
   const [activeBars] = useState(currentExercise.bars.map((bar, index) => index))
 
@@ -159,8 +169,16 @@ function App () {
       </div>
       <div className="row mb-3">
         <div className="col">
-          <select className="form-select">
-            <option value="tarantula">Dan Lopatka’s Tarantula Exercise in C-minor</option>
+          <select className="form-select" onChange={e => {
+            updateExercise(e.target.value)
+          }}>
+            {Object.keys(exercises).map((exerciseKey) =>
+              <option
+                key={exerciseKey}
+                value={exerciseKey}>
+                {exercises[exerciseKey].title}
+              </option>,
+            )}
           </select>
         </div>
       </div>
