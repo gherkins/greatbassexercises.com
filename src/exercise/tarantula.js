@@ -5,10 +5,10 @@ const tarantula = {
     {
       chord: [
         'C3',
-        'D#3',
-        'G3',
-        'A#3',
-        'D4',
+        'D#4',
+        'G4',
+        'A#4',
+        'D5',
       ],
       notes: [
         {
@@ -40,10 +40,10 @@ const tarantula = {
     {
       chord: [
         'D3',
-        'F3',
-        'Ab3',
-        'C4',
-        'Eb4',
+        'F4',
+        'Ab4',
+        'C5',
+        'Eb5',
       ],
       notes: [
         {
@@ -75,10 +75,10 @@ const tarantula = {
     {
       chord: [
         'Eb3',
-        'G3',
-        'Bb3',
-        'D4',
-        'F4',
+        'G4',
+        'Bb4',
+        'D5',
+        'F5',
       ],
       notes: [
         {
@@ -110,10 +110,10 @@ const tarantula = {
     {
       chord: [
         'F3',
-        'Ab3',
-        'C4',
-        'Eb4',
-        'G4',
+        'Ab4',
+        'C5',
+        'Eb5',
+        'G5',
       ],
       notes: [
         {
@@ -145,10 +145,10 @@ const tarantula = {
     {
       chord: [
         'G3',
-        'Bb3',
-        'D4',
-        'F4',
-        'Ab4',
+        'Bb4',
+        'D5',
+        'F5',
+        'Ab5',
       ],
       notes: [
         {
@@ -180,10 +180,10 @@ const tarantula = {
     {
       chord: [
         'Ab3',
-        'C4',
-        'Eb4',
-        'G4',
-        'Bb4',
+        'C5',
+        'Eb5',
+        'G5',
+        'Bb5',
       ],
       notes: [
         {
@@ -215,10 +215,10 @@ const tarantula = {
     {
       chord: [
         'Bb3',
-        'D4',
-        'F4',
-        'Ab4',
-        'C5',
+        'D5',
+        'F5',
+        'Ab5',
+        'C6',
       ],
       notes: [
         {
