@@ -14,6 +14,7 @@ let bar = 0
 let note = 0
 let firstNote = true
 let piano, metro
+let currentExercise = Object.values(exercises)[0]
 
 function App () {
 
@@ -24,9 +25,8 @@ function App () {
 
   const [, updateState] = useState()
 
-  const [currentExercise, setCurrentExercise] = useState(Object.values(exercises)[0])
   const updateExercise = key => {
-    setCurrentExercise(exercises[key])
+    currentExercise = exercises[key]
     if (playing) {
       startStop()
     }
