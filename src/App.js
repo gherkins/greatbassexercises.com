@@ -157,16 +157,7 @@ function App () {
   }, [])
 
   return (
-    <div className="container mt-3">
-      <div className="row mb-4">
-        <div className="col">
-          <h1>
-            Great<br />
-            Bass<br />
-            Exercises.com
-          </h1>
-        </div>
-      </div>
+    <React.Fragment>
       <div className="row mb-3">
         <div className="col">
           <select className="form-select" onChange={e => {
@@ -256,8 +247,7 @@ function App () {
           </p>
         </div>
       </div>
-
-    </div>
+    </React.Fragment>
   )
 }
 
