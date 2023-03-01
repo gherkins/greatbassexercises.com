@@ -1,5 +1,5 @@
 const tarantulaDesc = {
-  title: 'Dan Lopatka’s Tarantula Exercise in C-minor (Descending)',
+  title: 'Tarantula Exercise in C-minor (Descending)',
   description: 'Super useful and fun way to practice 9th arpeggios over the C-minor scale. Descenting version.',
   bars: [
     {
