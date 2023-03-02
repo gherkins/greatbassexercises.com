@@ -23,10 +23,9 @@ let currentExercise = Object.values(exercises)[0]
 function App () {
 
   const [instrumentsLoaded, setInstrumentsLoaded] = useState(false)
-
   const [playing, setPlaying] = useState(false)
   const [bpm, setBpm] = useState(120)
-
+  const [activeBars, setActiveBars] = useState([])
   const [, updateState] = useState()
 
   const updateExercise = key => {
@@ -36,10 +35,9 @@ function App () {
     }
     bar = 0
     tick = 0
+    setActiveBars(currentExercise.bars.map((bar, index) => index))
     updateState({})
   }
-
-  const [activeBars] = useState(currentExercise.bars.map((bar, index) => index))
 
   const isActiveBar = (index) => {
     return activeBars.includes(index)
@@ -60,7 +58,7 @@ function App () {
 
   }
 
-  const [currentTick, setCurrentTick] = useState(currentExercise.bars[bar].ticks[tick])
+  const [currentTick, setCurrentTick] = useState()
 
   const advance = () => {
     const currentBar = currentExercise.bars[bar]
@@ -166,6 +164,7 @@ function App () {
     initInstruments().then(() => {
       setInstrumentsLoaded(true)
     })
+    updateExercise(Object.keys(exercises)[0])
   }, [])
 
   return (
