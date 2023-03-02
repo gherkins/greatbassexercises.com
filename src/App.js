@@ -58,6 +58,17 @@ function App () {
 
   }
 
+  const exercisesByCategories = () => {
+    const categories = {}
+    Object.keys(exercises).forEach(exerciseKey => {
+      if (!categories[exercises[exerciseKey].category]) {
+        categories[exercises[exerciseKey].category] = {}
+      }
+      categories[exercises[exerciseKey].category][exerciseKey] = exercises[exerciseKey]
+    })
+    return categories
+  }
+
   const [currentTick, setCurrentTick] = useState()
 
   const advance = () => {
@@ -176,13 +187,15 @@ function App () {
             onChange={e => {
               updateExercise(e.target.value)
             }}>
-            {Object.keys(exercises).map((exerciseKey) =>
-              <option
-                key={exerciseKey}
-                value={exerciseKey}>
-                {exercises[exerciseKey].title}
-              </option>,
-            )}
+            {Object.keys(exercisesByCategories()).map((categoryKey) => <optgroup key={categoryKey} label={categoryKey}>
+              {Object.keys(exercisesByCategories()[categoryKey]).map((exerciseKey) =>
+                <option
+                  key={exerciseKey}
+                  value={exerciseKey}>
+                  {exercises[exerciseKey].title}
+                </option>,
+              )}
+            </optgroup>)}
           </select>
         </div>
       </div>

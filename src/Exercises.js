@@ -4,9 +4,9 @@ import eMelodicMinorThirds from './exercise/eMelodicMinorThirds'
 import hazardPartA from './exercise/hazardPartA'
 
 const exercises = {
+  eMelodicMinorThirds,
   tarantula,
   tarantulaDesc,
-  eMelodicMinorThirds,
   hazardPartA,
 }
 

@@ -1,4 +1,5 @@
 const hazardPartA = {
+  category: 'Yoga',
   title: `Steve Bailey´s Hazard Exercise Part A`,
   description: `"It's like yoga - for your fingers..."\nNote how fingers 1 & 2 stay in place.\nPractice at your own risk.`,
   bars: [
