@@ -1,6 +1,6 @@
 const tarantulaDesc = {
   title: 'Tarantula Exercise in C-minor (Descending)',
-  description: 'Super useful and fun way to practice 9th arpeggios over the C-minor scale.\nDescenting version.\nTry plucking each arpeggio 1-1-1-2-1-2.',
+  description: 'Super useful and fun way to practice 9th arpeggios over the C-minor scale.\nDescending version.\nTry plucking each arpeggio 1-1-1-2-1-2.',
   bars: [
     {
       chord: [
