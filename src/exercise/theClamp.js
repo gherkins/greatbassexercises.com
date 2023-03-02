@@ -1,7 +1,9 @@
 const theClamp = {
   category: 'Yoga',
   title: `The Clamp`,
-  description: `All fingers stay in place - all the time.\nMight cause some slight tension., practice at your own risk.`,
+  description: `You always just pluck the string where your 1st finger is.
+All others fingers stay in place - all the time.
+Might cause some slight tension., practice at your own risk.`,
   bars: [],
 }
 
@@ -36,13 +38,11 @@ for (let string = 1; string <= 4; string++) {
 for (let string = 3; string >= 1; string--) {
   for (let finger = 1; finger <= 4; finger++) {
 
-    const tick = {
+    fingerPositions[finger - 1] = {
       string,
       fret: finger + 4,
       finger,
     }
-
-    fingerPositions[finger - 1] = tick
 
     bar.ticks.push([
       ...fingerPositions,
