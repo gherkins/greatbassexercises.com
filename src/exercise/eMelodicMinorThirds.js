@@ -88,6 +88,7 @@ const eMelodicMinorThirds = {
         'E3',
         'G4',
         'A4',
+        'G#5',
         'F#5',
       ],
       ticks: [
