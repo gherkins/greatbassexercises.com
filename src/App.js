@@ -160,9 +160,11 @@ function App () {
     <React.Fragment>
       <div className="row mb-3">
         <div className="col">
-          <select className="form-select" onChange={e => {
-            updateExercise(e.target.value)
-          }}>
+          <select
+            className="form-select"
+            onChange={e => {
+              updateExercise(e.target.value)
+            }}>
             {Object.keys(exercises).map((exerciseKey) =>
               <option
                 key={exerciseKey}
@@ -242,7 +244,7 @@ function App () {
               {currentExercise.title}
             </strong>
           </h6>
-          <p>
+          <p className="description">
             {currentExercise.description}
           </p>
         </div>
