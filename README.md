@@ -25,9 +25,24 @@ __Exercises are organized in "bars", "ticks" and "notes"__
 * An Exercise contains one or many _bars_.
 * Each _bar_ defines a playalong-piano-chord and contains one or many _ticks_.
 * Each _tick_ contains one or many _notes_.
-* Each _note_ then describes a _fret_ and a _string_ position.
+* Each _note_ then describes a _fret_ and a _string_ position and also optionally the _finger_ of the fretting hand.
 
-That way we can describe chords, scales, arpeggios, etc. in a flexible way.
+```javascript
+  [
+    {
+          string: 1,
+          fret: 1,
+          finger: 1,
+      },
+      {
+          string: 2,
+          fret: 2,
+          finger: 2,
+      }
+  ],
+```
+
+That way we can describe chords, scales, arpeggios, etc.
 
 ## Local development
 
