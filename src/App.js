@@ -97,8 +97,9 @@ function App () {
     setCurrentTick(currentExercise.bars[bar].ticks[tick])
   }
 
-  const startStop = () => {
-    init()
+  const startStop = async () => {
+    await Tone.start()
+    scheduleTicks()
     const isPlaying = !playing
     Tone.Transport[isPlaying ? 'start' : 'stop']()
     setPlaying(isPlaying)
@@ -123,8 +124,7 @@ function App () {
     })
   }
 
-  const init = () => {
-    Tone.start()
+  const scheduleTicks = () => {
     Tone.Transport.clear(scheduleEvent)
     scheduleEvent = Tone.Transport.scheduleRepeat((time) => {
       if (!firstTick) {
