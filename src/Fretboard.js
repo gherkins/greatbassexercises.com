@@ -10,24 +10,31 @@ function Fretboard (props) {
     }
 
     let contains = false
-    props.currentExercise.bars[props.bar].notes.forEach(note => {
-      if (note.fret === fret && note.string === string) {
-        contains = true
-      }
+    props.currentExercise.bars[props.bar].ticks.forEach(tick => {
+      tick.forEach(note => {
+        if (note.fret === fret && note.string === string) {
+          contains = true
+        }
+      })
     })
     return contains
   }
 
   const isActiveFret = (string, fret) => {
-    return props.playing && props.currentNote.string === string && props.currentNote.fret === fret
+    if (!props.playing) {
+      return false
+    }
+    return props.currentTick.find(note => note.string === string && note.fret === fret) !== undefined
   }
 
   const getLowestFretInCurrentBar = () => {
     let lowestFret = 100
-    props.currentExercise.bars[props.bar].notes.forEach(note => {
-      if (note.fret < lowestFret) {
-        lowestFret = note.fret
-      }
+    props.currentExercise.bars[props.bar].ticks.forEach(tick => {
+      tick.forEach(note => {
+        if (note.fret < lowestFret) {
+          lowestFret = note.fret
+        }
+      })
     })
     return lowestFret
   }

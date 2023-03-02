@@ -11,8 +11,8 @@ import './App.scss'
 
 let initialized = false
 let bar = 0
-let note = 0
-let firstNote = true
+let tick = 0
+let firstTick = true
 let piano, metro
 let currentExercise = Object.values(exercises)[0]
 
@@ -31,7 +31,7 @@ function App () {
       startStop()
     }
     bar = 0
-    note = 0
+    tick = 0
     updateState({})
   }
 
@@ -56,13 +56,13 @@ function App () {
 
   }
 
-  const [currentNote, setCurrentNote] = useState(currentExercise.bars[bar].notes[note])
+  const [currentTick, setCurrentTick] = useState(currentExercise.bars[bar].ticks[tick])
 
   const advance = () => {
     const currentBar = currentExercise.bars[bar]
-    let nextNote = note + 1
-    if (!currentBar.notes[nextNote]) {
-      nextNote = 0
+    let nextTick = tick + 1
+    if (!currentBar.ticks[nextTick]) {
+      nextTick = 0
       let nextBar = bar + 1
       if (!currentExercise.bars[nextBar]) {
         nextBar = 0
@@ -75,11 +75,11 @@ function App () {
       }
       bar = nextBar
     }
-    note = nextNote
+    tick = nextTick
   }
 
-  const showNote = () => {
-    setCurrentNote(currentExercise.bars[bar].notes[note])
+  const showTick = () => {
+    setCurrentTick(currentExercise.bars[bar].ticks[tick])
   }
 
   const startStop = () => {
@@ -87,11 +87,11 @@ function App () {
     const isPlaying = !playing
     Tone.Transport[isPlaying ? 'start' : 'stop']()
     setPlaying(isPlaying)
-    note = 0
+    tick = 0
     if (isPlaying) {
-      firstNote = true
+      firstTick = true
     }
-    showNote()
+    showTick()
   }
 
   const setTempo = bpm => {
@@ -102,8 +102,8 @@ function App () {
 
   const playChord = time => {
     piano.releaseAll()
-    currentExercise.bars[bar].chord.forEach((note, index) => {
-      piano.triggerAttack(note, time)
+    currentExercise.bars[bar].chord.forEach((tick, index) => {
+      piano.triggerAttack(tick, time)
     })
   }
 
@@ -114,12 +114,12 @@ function App () {
     Tone.start()
 
     Tone.Transport.scheduleRepeat((time) => {
-      if (!firstNote) {
+      if (!firstTick) {
         advance()
       }
-      firstNote = false
-      showNote()
-      if (note === 0) {
+      firstTick = false
+      showTick()
+      if (tick === 0) {
         playChord(time)
       }
       metro.start(time)
@@ -202,10 +202,10 @@ function App () {
         <div className="col">
           <Fretboard
             currentExercise={currentExercise}
-            currentNote={currentNote}
+            currentTick={currentTick}
             playing={playing}
             bar={bar}
-            note={note}
+            tick={tick}
           />
         </div>
       </div>
@@ -221,7 +221,7 @@ function App () {
                         return
                       }
                       bar = index
-                      note = 0
+                      tick = 0
                       updateState({})
                     }}
               >

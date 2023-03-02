@@ -10,31 +10,31 @@ const tarantulaDesc = {
         'Ab5',
         'C6',
       ],
-      notes: [
-        {
+      ticks: [
+        [{
           string: 4,
           fret: 13,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 15,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 17,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 13,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 15,
-        },
-        {
+        }],
+        [{
           string: 4,
           fret: 17,
-        },
+        }],
       ],
     },
     {
@@ -45,31 +45,31 @@ const tarantulaDesc = {
         'G5',
         'Bb5',
       ],
-      notes: [
-        {
+      ticks: [
+        [{
           string: 4,
           fret: 12,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 13,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 15,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 11,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 13,
-        },
-        {
+        }],
+        [{
           string: 4,
           fret: 15,
-        },
+        }],
       ],
     },
     {
@@ -80,31 +80,31 @@ const tarantulaDesc = {
         'F5',
         'Ab5',
       ],
-      notes: [
-        {
+      ticks: [
+        [{
           string: 4,
           fret: 10,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 12,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 13,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 10,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 12,
-        },
-        {
+        }],
+        [{
           string: 4,
           fret: 13,
-        },
+        }],
       ],
     },
     {
@@ -115,31 +115,31 @@ const tarantulaDesc = {
         'Eb5',
         'G5',
       ],
-      notes: [
-        {
+      ticks: [
+        [{
           string: 4,
           fret: 8,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 10,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 11,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 8,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 10,
-        },
-        {
+        }],
+        [{
           string: 4,
           fret: 12,
-        },
+        }],
       ],
     },
     {
@@ -150,31 +150,31 @@ const tarantulaDesc = {
         'D5',
         'F5',
       ],
-      notes: [
-        {
+      ticks: [
+        [{
           string: 4,
           fret: 7,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 8,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 10,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 6,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 8,
-        },
-        {
+        }],
+        [{
           string: 4,
           fret: 10,
-        },
+        }],
       ],
     },
     {
@@ -185,31 +185,31 @@ const tarantulaDesc = {
         'C5',
         'Eb5',
       ],
-      notes: [
-        {
+      ticks: [
+        [{
           string: 4,
           fret: 5,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 6,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 8,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 5,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 6,
-        },
-        {
+        }],
+        [{
           string: 4,
           fret: 8,
-        },
+        }],
       ],
     },
     {
@@ -220,31 +220,31 @@ const tarantulaDesc = {
         'A#4',
         'D5',
       ],
-      notes: [
-        {
+      ticks: [
+        [{
           string: 4,
           fret: 3,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 5,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 6,
-        },
-        {
+        }],
+        [{
           string: 2,
           fret: 3,
-        },
-        {
+        }],
+        [{
           string: 3,
           fret: 5,
-        },
-        {
+        }],
+        [{
           string: 4,
           fret: 7,
-        },
+        }],
       ],
     },
   ],
