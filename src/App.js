@@ -165,7 +165,7 @@ function App () {
       setInstrumentsLoaded(true)
     })
     updateExercise(Object.keys(exercises)[0])
-  }, [])
+  }, []) /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <React.Fragment>
