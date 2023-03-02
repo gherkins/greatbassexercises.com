@@ -1,7 +1,7 @@
 const theClamp = {
   category: 'Yoga',
   title: `The Clamp`,
-  description: `"All fingers stay in place - all the time.\nPractice at your own risk.`,
+  description: `All fingers stay in place - all the time.\nMight cause some slight tension., practice at your own risk.`,
   bars: [],
 }
 
