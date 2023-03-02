@@ -1,6 +1,6 @@
 const hazardPartA = {
   title: `Steve Bailey´s Hazard Exercise Part A`,
-  description: `"It's like yoga - for your fingers..."\nMention how fingers 1 & 2 stay in place.\nPractice at your own risk.`,
+  description: `"It's like yoga - for your fingers..."\nNote how fingers 1 & 2 stay in place.\nPractice at your own risk.`,
   bars: [
     {
       chord: [],
