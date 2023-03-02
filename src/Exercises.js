@@ -7,10 +7,12 @@ import tarantulaDesc from './exercise/tarantulaDesc'
 
 import hazardPartA from './exercise/hazardPartA'
 import theClamp from './exercise/theClamp'
+import dMinorThirds from './exercise/dMinorThirds'
 
 const exercises = {
   cMajorThirds,
   cMajorFourths,
+  dMinorThirds,
   eMelodicMinorThirds,
 
   tarantula,
