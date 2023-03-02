@@ -6,7 +6,7 @@ const eMelodicMinorThirds = {
     {
       chord: [
         'E3',
-        'G4',
+        'G3',
         'A4',
         'F#5',
       ],
