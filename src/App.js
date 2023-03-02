@@ -9,7 +9,7 @@ import Fretboard from './Fretboard'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
-let initialized = false
+let scheduleEvent
 
 let bar = 0
 let tick = 0
@@ -77,9 +77,11 @@ function App () {
     if (!currentBar.ticks[nextTick]) {
       nextTick = 0
       let nextBar = bar + 1
-      if (!currentExercise.bars[nextBar]) {
+
+      if (nextBar >= currentExercise.bars.length) {
         nextBar = 0
       }
+
       while (!isActiveBar(nextBar)) {
         nextBar = nextBar + 1
         if (!currentExercise.bars[nextBar]) {
@@ -122,12 +124,9 @@ function App () {
   }
 
   const init = () => {
-    if (initialized) {
-      return false
-    }
     Tone.start()
-
-    Tone.Transport.scheduleRepeat((time) => {
+    Tone.Transport.clear(scheduleEvent)
+    scheduleEvent = Tone.Transport.scheduleRepeat((time) => {
       if (!firstTick) {
         advance()
       }
@@ -145,7 +144,6 @@ function App () {
         playChord(time)
       }
     }, '4n')
-    initialized = true
   }
 
   const initInstruments = () => {
