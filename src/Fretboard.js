@@ -27,6 +27,10 @@ function Fretboard (props) {
     return props.currentTick.find(note => note.string === string && note.fret === fret) !== undefined
   }
 
+  const getFinger = (string, fret) => {
+    return props.currentTick.find(note => note.string === string && note.fret === fret).finger || ''
+  }
+
   const getLowestFretInCurrentBar = () => {
     let lowestFret = 100
     props.currentExercise.bars[props.bar].ticks.forEach(tick => {
@@ -58,7 +62,7 @@ function Fretboard (props) {
           {romanNumerals[minFret - 1]}
         </span>}
           {isDottedFret(string, fret) && <span className="dot"></span>}
-          {isActiveFret(string, fret) && <span className="dot active"></span>}
+          {isActiveFret(string, fret) && <span className="dot active">{getFinger(string, fret)}</span>}
         </td>)}
       </tr>)}
     </tbody>

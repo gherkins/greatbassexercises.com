@@ -56,6 +56,10 @@ table.fretboard {
 
             &.active {
                 background-color: #000;
+                color: #fff;
+                line-height: 18px;
+                text-align: center;
+                font-size: 10px;
             }
         }
     }
