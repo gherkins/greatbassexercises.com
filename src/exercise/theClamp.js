@@ -5,13 +5,14 @@ const theClamp = {
   bars: [],
 }
 
-const previousFingerPositions = []
+const fingerPositions = []
 
-const bar1 = {
+const bar = {
   chord: [],
   ticks: [],
 }
 
+// up
 for (let string = 1; string <= 4; string++) {
   for (let finger = 1; finger <= 4; finger++) {
     const tick = {
@@ -20,27 +21,18 @@ for (let string = 1; string <= 4; string++) {
       finger,
     }
 
-    previousFingerPositions[finger - 1] = tick
+    fingerPositions[finger - 1] = tick
 
-    if (previousFingerPositions.length >= 4) {
-      bar1.ticks.push([
-        tick, ...previousFingerPositions,
+    if (fingerPositions.length >= 4 && !(string === 1 && finger === 4)) {
+      bar.ticks.push([
+        tick, ...fingerPositions,
       ])
     }
 
   }
 }
-theClamp.bars.push(bar1)
 
-const bar2 = {
-  chord: [],
-  ticks: [],
-}
-
-bar2.ticks.push([
-  ...previousFingerPositions,
-])
-
+//down
 for (let string = 3; string >= 1; string--) {
   for (let finger = 1; finger <= 4; finger++) {
 
@@ -50,13 +42,13 @@ for (let string = 3; string >= 1; string--) {
       finger,
     }
 
-    previousFingerPositions[finger - 1] = tick
+    fingerPositions[finger - 1] = tick
 
-    bar2.ticks.push([
-      tick, ...previousFingerPositions,
+    bar.ticks.push([
+      ...fingerPositions,
     ])
   }
 }
-theClamp.bars.push(bar2)
+theClamp.bars.push(bar)
 
 export default theClamp
