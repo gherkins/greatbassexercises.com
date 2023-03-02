@@ -10,9 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 
 let initialized = false
+
 let bar = 0
 let tick = 0
+
 let firstTick = true
+let countIn = 4
+
 let piano, metro
 let currentExercise = Object.values(exercises)[0]
 
@@ -90,6 +94,7 @@ function App () {
     tick = 0
     if (isPlaying) {
       firstTick = true
+      countIn = 4
     }
     showTick()
   }
@@ -117,12 +122,19 @@ function App () {
       if (!firstTick) {
         advance()
       }
+      metro.start(time)
+
+      if (countIn > 0) {
+        countIn--
+        return
+      }
+
       firstTick = false
       showTick()
+      updateState({})
       if (tick === 0) {
         playChord(time)
       }
-      metro.start(time)
     }, '4n')
     initialized = true
   }
@@ -205,7 +217,7 @@ function App () {
           <Fretboard
             currentExercise={currentExercise}
             currentTick={currentTick}
-            playing={playing}
+            playing={playing && countIn === 0}
             bar={bar}
             tick={tick}
           />
