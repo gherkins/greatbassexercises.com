@@ -252,7 +252,11 @@ function App () {
               </span>
               <br />
               <span className={`d-inline-block ms-2 me-2`} style={{ width: 15 }}>
-              <input type="checkbox" checked={isActiveBar(index)} onChange={() => {toggleActiveBar(index)}} />
+              <input type="checkbox"
+                     disabled={isActiveBar(index) && activeBars.length === 1}
+                     checked={isActiveBar(index)}
+                     onChange={() => {toggleActiveBar(index)}}
+              />
             </span>
             </div>,
           )}
