@@ -5,6 +5,8 @@ import eMelodicMinorThirds from './exercise/eMelodicMinorThirds'
 import tarantula from './exercise/tarantula'
 import tarantulaDesc from './exercise/tarantulaDesc'
 
+import chords10ths from './exercise/chords10ths'
+
 import hazardPartA from './exercise/hazardPartA'
 import theClamp from './exercise/theClamp'
 import dMinorThirds from './exercise/dMinorThirds'
@@ -17,6 +19,8 @@ const exercises = {
 
   tarantula,
   tarantulaDesc,
+
+  chords10ths,
 
   hazardPartA,
   theClamp,
