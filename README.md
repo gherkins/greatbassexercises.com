@@ -44,6 +44,9 @@ __Exercises are organized in "bars", "ticks" and "notes"__
 
 That way we can describe chords, scales, arpeggios, etc.
 
+> since these are just js files, you can also use a more programmatically approach like this for example: https://github.com/gherkins/greatbassexercises.com/blob/main/src/exercise/theClamp.js
+
+
 ## Local development
 
 Requirements:
