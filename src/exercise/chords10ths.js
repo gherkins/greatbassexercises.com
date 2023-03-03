@@ -1,8 +1,7 @@
 const chords10ths = {
   category: 'Chords',
   title: 'Adam Neely’s G major 10th chords',
-  description: `Nice 10th chord-exercise to play over the G major scale.
-You might want to start on a lower tempo.`,
+  description: `Nice 10th chord-exercise to play over the G major scale.`,
   bars: [],
 }
 
@@ -112,7 +111,7 @@ chords.forEach((chord, index) => {
       notes[index + 11],
       notes[index + 13],
     ],
-    ticks: [chord],
+    ticks: [chord, chord, chord, chord],
   }
 
   chords10ths.bars.push(bar)
