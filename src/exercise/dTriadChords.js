@@ -2,8 +2,8 @@ const dTriadChords = {
   category: 'Chords',
   title: 'Triads in D',
   description: `All 3 inversions of the 4 triad types in the key of D 
-It goes major, minor, augmented, diminished
-three inversions each - repeat.`,
+It goes major, augmented, minor, diminished
+then through the inversions - repeat.`,
   bars: [],
 }
 
@@ -15,19 +15,19 @@ const triads = [
     [9, 7, 7],
     [12, 12, 11],
   ],
-  //minor
-  [
-    ['D3', 'F4', 'A4', 'D4'],
-    [5, 3, 2],
-    [8, 7, 7],
-    [12, 12, 10],
-  ],
   //augmented
   [
     ['D3', 'F#4', 'A#4', 'D4'],
     [5, 4, 3],
     [9, 8, 7],
     [13, 12, 11],
+  ],
+  //minor
+  [
+    ['D3', 'F4', 'A4', 'D4'],
+    [5, 3, 2],
+    [8, 7, 7],
+    [12, 12, 10],
   ],
   //diminished
   [
@@ -38,8 +38,8 @@ const triads = [
   ],
 ]
 
-triads.forEach(triad => {
-  for (let i = 1; i <= 3; i++) {
+for (let i = 1; i <= 3; i++) {
+  triads.forEach(triad => {
     const bar = {
       chord: triad[0],
     }
@@ -53,8 +53,7 @@ triads.forEach(triad => {
 
     bar.ticks = [tick, tick, tick, tick]
     dTriadChords.bars.push(bar)
-  }
-
-})
+  })
+}
 
 export default dTriadChords
