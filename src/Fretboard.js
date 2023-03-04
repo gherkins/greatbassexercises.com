@@ -31,9 +31,9 @@ function Fretboard (props) {
     return props.currentTick.find(note => note.string === string && note.fret === fret).finger || ''
   }
 
-  const getLowestFretInCurrentBar = () => {
+  const getLowestFretForBar = bar => {
     let lowestFret = 100
-    props.currentExercise.bars[props.bar].ticks.forEach(tick => {
+    props.currentExercise.bars[bar].ticks.forEach(tick => {
       tick.forEach(note => {
         if (note.fret < lowestFret) {
           lowestFret = note.fret
@@ -43,9 +43,37 @@ function Fretboard (props) {
     return lowestFret
   }
 
+  const getHighestFretForBar = bar => {
+    let highestFret = 0
+    props.currentExercise.bars[bar].ticks.forEach(tick => {
+      tick.forEach(note => {
+        if (note.fret > highestFret) {
+          highestFret = note.fret
+        }
+      })
+    })
+    return highestFret
+  }
+
+  const getLowestFretForCurrentBar = () => {
+    let lowestFret = getLowestFretForBar(props.bar)
+    const highestFret = getHighestFretForBar(props.bar)
+    const lowestAcceptableFret = highestFret - 5
+
+    for (let bar = props.bar; bar < props.currentExercise.bars.length; bar++) {
+      const lowestFretCandidate = getLowestFretForBar(bar)
+      if (lowestFretCandidate < lowestFret) {
+        if ((lowestFretCandidate + 5) > lowestAcceptableFret) {
+          lowestFret = lowestFretCandidate
+        }
+      }
+    }
+    return lowestFret
+  }
+
   const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII']
 
-  const minFret = getLowestFretInCurrentBar()
+  const minFret = getLowestFretForCurrentBar()
   const maxFret = minFret + 5
 
   const strings = [4, 3, 2, 1]
