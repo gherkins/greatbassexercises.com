@@ -10,6 +10,7 @@ import chords10ths from './exercise/chords10ths'
 import hazardPartA from './exercise/hazardPartA'
 import theClamp from './exercise/theClamp'
 import dMinorThirds from './exercise/dMinorThirds'
+import dTriadChords from './exercise/dTriadChords'
 
 const exercises = {
   cMajorThirds,
@@ -21,6 +22,7 @@ const exercises = {
   tarantulaDesc,
 
   chords10ths,
+  dTriadChords,
 
   hazardPartA,
   theClamp,
