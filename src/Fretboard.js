@@ -58,12 +58,12 @@ function Fretboard (props) {
   const getLowestFretForCurrentBar = () => {
     let lowestFret = getLowestFretForBar(props.bar)
     const highestFret = getHighestFretForBar(props.bar)
-    const lowestAcceptableFret = highestFret - 5
 
     for (let bar = props.bar; bar < props.currentExercise.bars.length; bar++) {
       const lowestFretCandidate = getLowestFretForBar(bar)
       if (lowestFretCandidate < lowestFret) {
-        if ((lowestFretCandidate + 5) > lowestAcceptableFret) {
+        const highestFretCandidate = lowestFretCandidate + 5
+        if (highestFretCandidate >= highestFret) {
           lowestFret = lowestFretCandidate
         }
       }
