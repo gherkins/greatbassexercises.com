@@ -29,12 +29,12 @@ function App () {
   const [, updateState] = useState()
 
   const updateExercise = async key => {
+    bar = 0
+    tick = 0
     currentExercise = exercises[key]
     if (playing) {
       await startStop()
     }
-    bar = 0
-    tick = 0
     setActiveBars(currentExercise.bars.map((bar, index) => index))
     updateState({})
   }
