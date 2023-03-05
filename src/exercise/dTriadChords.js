@@ -2,7 +2,7 @@ const dTriadChords = {
   category: 'Chords',
   title: 'Triads in D',
   description: `All 3 inversions of the 4 triad types in the key of D 
-It goes major, augmented, minor, diminished
+It goes major -> augmented -> minor -> diminished
 then through the inversions - repeat.`,
   bars: [],
 }
