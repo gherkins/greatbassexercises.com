@@ -28,10 +28,10 @@ function App () {
   const [activeBars, setActiveBars] = useState([])
   const [, updateState] = useState()
 
-  const updateExercise = key => {
+  const updateExercise = async key => {
     currentExercise = exercises[key]
     if (playing) {
-      startStop()
+      await startStop()
     }
     bar = 0
     tick = 0
@@ -99,12 +99,12 @@ function App () {
 
   const startStop = async () => {
     await Tone.start()
-    scheduleTicks()
     const isPlaying = !playing
     Tone.Transport[isPlaying ? 'start' : 'stop']()
     setPlaying(isPlaying)
     tick = 0
     if (isPlaying) {
+      scheduleTicks()
       firstTick = true
       countIn = 4
     }
